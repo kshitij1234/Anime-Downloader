@@ -1,0 +1,16 @@
+.root{
+	-fx-background-color: #7CAFC2;
+}
+
+.heading{
+	-fx-font-family: 'Lobster',cursive;
+	-fx-padding: 20px;
+	-fx-text-fill: linear-gradient(#DC9656,#AB4642);
+}
+
+.nineanimebtn,.animehaevenbtn,.kissanimebtn{
+	-fx-background-color: linear-gradient(#DC9656,#AB4642);
+	-fx-font-family: 'Boogaloo',cursive;
+	-fx-font-size: 16px;
+	-fx-text-fill: #FFFFFF;
+}
