@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" stylesheets="@MainPageView.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.MainPageViewController">
    <top>
       <Label styleClass="heading" text="ANIME DOWNLOADER" textAlignment="JUSTIFY" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
@@ -30,9 +30,9 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="161.0" layoutY="71.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="173.0" styleClass="animehaevenbtn" text="AnimeHaeven Downloader" />
-            <Button layoutX="161.0" layoutY="167.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="173.0" styleClass="nineanimebtn" text="9Anime Downloader" />
-            <Button layoutX="161.0" layoutY="269.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="173.0" styleClass="kissanimebtn" text="KissAnime Downloader" />
+            <Button fx:id="animehaevenbtn" layoutX="161.0" layoutY="71.0" mnemonicParsing="false" onAction="#getAnimeHeaven" prefHeight="73.0" prefWidth="173.0" styleClass="animehaevenbtn" text="AnimeHaeven Downloader" />
+            <Button fx:id="nineanimebtn" layoutX="161.0" layoutY="167.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="173.0" styleClass="nineanimebtn" text="9Anime Downloader" />
+            <Button fx:id="kissanimebtn" layoutX="161.0" layoutY="269.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="173.0" styleClass="kissanimebtn" text="KissAnime Downloader" />
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />

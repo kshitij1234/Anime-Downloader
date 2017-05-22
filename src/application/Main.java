@@ -1,9 +1,11 @@
+package application;
 
 import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -27,12 +29,13 @@ public class Main extends Application {
 		Scene scene = new Scene(mainLayout);
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Boogaloo");
 		scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Lobster");
-		scene.getStylesheets().add("view/MainPageView.css");
+		
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setResizable(false);
 	}
 
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
