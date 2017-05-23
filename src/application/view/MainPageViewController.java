@@ -1,9 +1,7 @@
 package application.view;
 
-import java.beans.Visibility;
 import java.io.IOException;
 
-import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +14,9 @@ public class MainPageViewController {
 	
 	@FXML
 	private Button animehaevenbtn;
+	@FXML
 	private Button nineanimebtn;
+	@FXML
 	private Button kissanimebtn;
 	
 	@FXML
