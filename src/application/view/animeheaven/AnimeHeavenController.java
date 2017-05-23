@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Anime;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -92,8 +93,10 @@ public class AnimeHeavenController implements Initializable{
 			
 			errormsg.setTextFill(Paint.valueOf("green"));
 			errormsg.setText("Starting Download");
+			
 			// Actual Downloading here
 			// Test with -  http://animeheaven.eu/i.php?a=Bananya
+			//http://animeheaven.eu/i.php?a=She%20and%20Her%20Cat%20-%20Everything%20Flows
 			
 			new Thread(){
 				public void run(){
@@ -115,10 +118,13 @@ public class AnimeHeavenController implements Initializable{
 	                if(s.equalsIgnoreCase("error") && i==0)
 	                {
 	                	// create alert for internet connectivity or bad url and exit
+	                	Platform.runLater(
+	                ()->{
 	                	Alert alert = new Alert(AlertType.ERROR);
 	    	            alert.setTitle("Error!!!");
 	    	            alert.setContentText("Error in downloading. Either your Internet Connection is down or the URL is broken. Please try again.");
 	    	            alert.showAndWait();
+	                });
 	    	            break;
 	                }
 	                if(s.startsWith("Downloading"))
@@ -130,34 +136,48 @@ public class AnimeHeavenController implements Initializable{
 	                else if(s.startsWith("Downloaded"))
 	                {
 	                	anime.setStatus("Complete");
+	                	//table.setItems(list);
 	                }
 	                else {
 						anime.setStatus("Error");
+						//table.setItems(list);
 					}
 	                i++;
 	            }
 	            if(i!=0){
+	            	anime=new Anime("","");
+	            	list.add(anime);
+	            	table.setItems(list);
+	            	Platform.runLater(
+	            ()->{
 		            Alert alert = new Alert(AlertType.INFORMATION);
 		            alert.setTitle("Task Complete");
 		            alert.setContentText("Download Completed. Please click the Refresh Button.");
 		            alert.showAndWait();
+	            });
 		         }
 	            while((s=stdError.readLine())!=null)
 	            {
+	            	Platform.runLater(
+	        	  ()->{
 	            	Alert alert = new Alert(AlertType.ERROR);
 		            alert.setTitle("Error!!!!!!");
 		            alert.setContentText("Unknown Error occurred.");
 		            alert.showAndWait();
+	        	  });
 		            break;
 	            }
 	            
 	        }
 	        catch (IOException e) {
 	        	e.printStackTrace();
+	        	Platform.runLater(
+	    	  ()->{
 	        	Alert alert = new Alert(AlertType.ERROR);
 	            alert.setTitle("Error!!!!!!");
 	            alert.setContentText("Unknown Error occurred . Closing Application.");
 	            alert.showAndWait();
+	    	  });
 	            System.exit(-1);
 	        }
 			}}.start();		
@@ -169,6 +189,7 @@ public class AnimeHeavenController implements Initializable{
 		
 		list.clear();
 		table.setItems(list);
+		errormsg.setTextFill(Paint.valueOf("red"));
 		errormsg.setText("");
 		url.setText("");
 		path.setText("");
