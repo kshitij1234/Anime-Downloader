@@ -6,16 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<SplitPane dividerPositions="0.5117056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.animeheaven.AnimeHeavenController">
+<SplitPane dividerPositions="0.5117056856187291" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.animeheaven.AnimeHeavenController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="249.0" SplitPane.resizableWithParent="false">
          <children>
             <TextField fx:id="url" layoutX="12.0" layoutY="121.0" prefHeight="25.0" prefWidth="268.0" promptText="Enter URL of Episode List Page" />
             <TextField fx:id="path" editable="false" layoutX="12.0" layoutY="222.0" prefHeight="25.0" prefWidth="268.0" promptText="Download Location" />
             <Button fx:id="pathbtn" layoutX="65.0" layoutY="267.0" mnemonicParsing="false" onAction="#pathbtnClick" prefHeight="33.0" prefWidth="162.0" text="Choose Download Location" />
-            <Button fx:id="downloadbtn" layoutX="97.0" layoutY="351.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="99.0" text="Start Download" />
+            <Button fx:id="downloadbtn" layoutX="47.0" layoutY="351.0" mnemonicParsing="false" onAction="#startDownload" prefHeight="33.0" prefWidth="99.0" text="Start Download" />
             <Text layoutX="14.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter URL Of Episode List :" />
             <Text layoutX="14.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Download Location :" />
+            <Label fx:id="errormsg" layoutX="14.0" layoutY="426.0" textFill="RED" />
+            <Button fx:id="refresh" layoutX="192.0" layoutY="351.0" mnemonicParsing="false" onAction="#refreshAll" prefHeight="33.0" prefWidth="70.0" text="Refresh" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
