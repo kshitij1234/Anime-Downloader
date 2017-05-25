@@ -31,8 +31,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="animehaevenbtn" layoutX="161.0" layoutY="71.0" mnemonicParsing="false" onAction="#getAnimeHeaven" prefHeight="73.0" prefWidth="173.0" styleClass="animehaevenbtn" text="AnimeHaeven Downloader" />
-            <Button fx:id="nineanimebtn" layoutX="161.0" layoutY="167.0" mnemonicParsing="false" onAction="#getNineAnime" prefHeight="73.0" prefWidth="173.0" styleClass="nineanimebtn" text="9Anime Downloader" />
-            <Button fx:id="kissanimebtn" layoutX="161.0" layoutY="269.0" mnemonicParsing="false" onAction="#getKissAnime" prefHeight="73.0" prefWidth="173.0" styleClass="kissanimebtn" text="KissAnime Downloader" />
+            <Button fx:id="nineanimebtn" layoutX="164.0" layoutY="214.0" mnemonicParsing="false" onAction="#getNineAnime" prefHeight="73.0" prefWidth="173.0" styleClass="nineanimebtn" text="9Anime Downloader" />
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />

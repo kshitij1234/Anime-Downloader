@@ -16,7 +16,7 @@ anime_episode_page = ""
 path = sys.argv[3]
 
 if not os.path.exists(os.path.dirname(path)):
-    os.makedirs(os.path.dirname(path))
+	os.makedirs(os.path.dirname(path))
 
 browser = webdriver.Firefox()
 browser.set_window_size(1024, 768)
@@ -24,76 +24,76 @@ browser.set_window_size(1024, 768)
 
 if "1" == sys.argv[1]:
 
-    try:
-        browser.get(site)
-        time.sleep(5)
-        anime_name = sys.argv[2]
-        browser.save_screenshot("mainpage.png")
-        search = browser.find_element_by_css_selector(".inner > input:nth-child(2)")
-        search.click()
-        search.send_keys(anime_name + Keys.ENTER)
-        time.sleep(5)
-        browser.save_screenshot('searchresult.png')
-        anime_episode_page = browser.find_element_by_css_selector(
-            "div.col-lg-4:nth-child(1) > div:nth-child(1) > a:nth-child(1)")
-        anime_episode_page.click()
+	try:
+		browser.get(site)
+		time.sleep(5)
+		anime_name = sys.argv[2]
+		#browser.save_screenshot("mainpage.png")
+		search = browser.find_element_by_css_selector(".inner > input:nth-child(2)")
+		search.click()
+		search.send_keys(anime_name + Keys.ENTER)
+		time.sleep(5)
+		#browser.save_screenshot('searchresult.png')
+		anime_episode_page = browser.find_element_by_css_selector("div.col-lg-4:nth-child(1) > div:nth-child(1) > a:nth-child(1)")
+		anime_episode_page.click()
 
-    except:
-        print("Error in searching specified anime")
-        sys.exit(1)
+	except:
+		print("Error")
+		sys.exit(1)
 
 else:
 
-    try:
-        anime_episode_page = sys.argv[2]
-        browser.get(anime_episode_page)
-        time.sleep(10)
-        browser.execute_script("window.stop();")
+	try:
+		anime_episode_page = sys.argv[2]
+		browser.get(anime_episode_page)
+		time.sleep(10)
+		browser.execute_script("window.stop();")
 
-    except:
-        print(anime_episode_page)
-        print("Wrong Page link . Link does not exist")
-        sys.exit(2)
+	except:
+		print(anime_episode_page)
+		print("Error")
+		sys.exit(2)
 
         # Now we have reached the page of episode number 1 (or n if used method 2)...Moving Forward
 
+download_link=""
+link=""
 time.sleep(5)
-
+count=1
 while True:
+	print("Downloading Episode "+str(count)+".mp4")
 
-    download_link = browser.find_element_by_css_selector("a.item")
-    link = download_link.get_attribute('href')
+	try:
+		download_link = browser.find_element_by_css_selector("a.item")
+		link = download_link.get_attribute('href')
+		downloaded = requests.get(link)
 
-    print("Downloading.....")
+	except:
+		print("Error")
+		break
 
-    try:
-        downloaded = requests.get(link)
+	d = downloaded.headers["content-disposition"]
 
-    except:
-        print("Connection Error . Trying to download next episode")
-        continue
+	fname = re.findall("filename=(.+)", d)[0]
 
-    d = downloaded.headers["content-disposition"]
+	f = open(path + fname[1:len(fname)-1], "wb")
 
-    fname = re.findall("filename=(.+)", d)[0]
+	for con in downloaded.iter_content(100000):
+		f.write(con)
+	print("Downloaded " + fname)
+	f.close()
+	count+=1	
+	# Let us go to the next page and if error occurs that means we have reached the last page and break
 
-    f = open(path + fname[1:len(fname)-1], "wb")
+	try:
+		next = browser.find_element_by_css_selector("div.item.mbtn.next.disabled")
+		#print("Unable to click")
+		break;
+	except:
+		next = browser.find_element_by_css_selector("div.item.mbtn.next")
+		next.click()
+		time.sleep(5)
+		#print("clicked")
+		
 
-    for con in downloaded.iter_content(100000):
-        f.write(con)
-    print("Downloaded : " + fname)
-    f.close()
-
-    # Let us go to the next page and if error occurs that means we have reached the last page and break
-
-    try:
-        next = browser.find_element_by_css_selector("div.item.mbtn.next.disabled")
-        print("Unable to click")
-        break;
-    except:
-        next = browser.find_element_by_css_selector("div.item.mbtn.next")
-        next.click()
-        time.sleep(5)
-        print("clicked")
-
-print("All possible episodes have been looped through")
+#print("All possible episodes have been looped through")

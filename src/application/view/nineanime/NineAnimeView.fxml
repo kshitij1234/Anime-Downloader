@@ -6,15 +6,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<SplitPane dividerPositions="0.5177" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.5177" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@NineAnimeStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.view.nineanime.NineAnimeController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="249.0" SplitPane.resizableWithParent="false">
          <children>
             <TextField fx:id="animename" layoutX="19.0" layoutY="224.0" prefHeight="25.0" prefWidth="268.0" promptText="Enter Anime Name or Starting URL" />
             <TextField fx:id="location" editable="false" layoutX="19.0" layoutY="311.0" prefHeight="25.0" prefWidth="268.0" promptText="Download Location" />
-            <Button fx:id="locationbtn" layoutX="66.0" layoutY="356.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="162.0" text="Choose Download Location" />
-            <Button fx:id="downloadbtn" layoutX="48.0" layoutY="415.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="99.0" text="Start Download" />
-            <Button fx:id="refreshbtn" layoutX="179.0" layoutY="415.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="70.0" text="Refresh" />
+            <Button fx:id="locationbtn" layoutX="66.0" layoutY="356.0" mnemonicParsing="false" onAction="#pathbtnClick" prefHeight="33.0" prefWidth="162.0" text="Choose Download Location" />
+            <Button fx:id="downloadbtn" layoutX="48.0" layoutY="415.0" mnemonicParsing="false" onAction="#startDownload" prefHeight="33.0" prefWidth="99.0" text="Start Download" />
+            <Button fx:id="refreshbtn" layoutX="179.0" layoutY="415.0" mnemonicParsing="false" onAction="#refreshAll" prefHeight="33.0" prefWidth="70.0" text="Refresh" />
             <Text layoutX="19.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Download Location :" />
             <Text layoutX="19.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Anime Name or Starting URL :" />
             <ChoiceBox fx:id="choicebox" layoutX="19.0" layoutY="94.0" prefHeight="25.0" prefWidth="268.0" />

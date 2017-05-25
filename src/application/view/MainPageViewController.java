@@ -17,8 +17,7 @@ public class MainPageViewController {
 	private Button animehaevenbtn;
 	@FXML
 	private Button nineanimebtn;
-	@FXML
-	private Button kissanimebtn;
+	
 	
 	@FXML
 	private void getAnimeHeaven(ActionEvent event) throws IOException{
@@ -38,14 +37,6 @@ public class MainPageViewController {
 		changeScene(stage, title, path);
 	}
 	
-	@FXML
-	private void getKissAnime(ActionEvent event) throws IOException{
-		
-		Stage stage = (Stage) kissanimebtn.getScene().getWindow();
-		String path = "kissanime/KissAnimeView.fxml";
-		String title = "Anidpy - KissAnime Downloader";
-		changeScene(stage, title, path);
-	}
 	
 	private void changeScene(Stage stage, String title, String path) throws IOException{
 		
