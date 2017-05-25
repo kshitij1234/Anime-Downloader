@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import sun.rmi.server.Activation;
 
 public class MainPageViewController {
 	
@@ -23,13 +24,36 @@ public class MainPageViewController {
 	private void getAnimeHeaven(ActionEvent event) throws IOException{
 		
 		Stage stage = (Stage) animehaevenbtn.getScene().getWindow();
+		String path = "animeheaven/AnimeHeavenView.fxml";
+		String title = "Anidpy - Animeheaven Downloader";
+		changeScene(stage, title, path);
+	}
+
+	@FXML
+	private void getNineAnime(ActionEvent event)throws IOException{
 		
-		Parent root = FXMLLoader.load(getClass().getResource("animeheaven/AnimeHeavenView.fxml"));
+		Stage stage = (Stage) nineanimebtn.getScene().getWindow();
+		String path = "nineanime/NineAnimeView.fxml";
+		String title = "Anidpy - 9Anime Downloader";
+		changeScene(stage, title, path);
+	}
+	
+	@FXML
+	private void getKissAnime(ActionEvent event) throws IOException{
+		
+		Stage stage = (Stage) kissanimebtn.getScene().getWindow();
+		String path = "kissanime/KissAnimeView.fxml";
+		String title = "Anidpy - KissAnime Downloader";
+		changeScene(stage, title, path);
+	}
+	
+	private void changeScene(Stage stage, String title, String path) throws IOException{
+		
+		Parent root = FXMLLoader.load(getClass().getResource(path));
 	    Scene scene = new Scene(root);
 	    stage.setScene(scene);
 	    stage.setResizable(true);
 	    stage.setMaximized(true);
-	    stage.setTitle("Anidpy - Animeheaven Downloader");
+	    stage.setTitle(title);
 	}
-
 }

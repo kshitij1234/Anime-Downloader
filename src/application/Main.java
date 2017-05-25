@@ -5,7 +5,6 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -22,7 +21,7 @@ public class Main extends Application {
 	}
 
 	private void showMainView() throws IOException {
-		// TODO Auto-generated method stub
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/MainPageView.fxml"));
 		mainLayout = loader.load();
