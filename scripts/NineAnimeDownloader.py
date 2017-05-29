@@ -64,6 +64,7 @@ while True:
 	print("Downloading Episode "+str(count)+".mp4")
 
 	try:
+		time.sleep(3)
 		download_link = browser.find_element_by_css_selector("a.item")
 		link = download_link.get_attribute('href')
 		downloaded = requests.get(link)
@@ -92,8 +93,8 @@ while True:
 	except:
 		next = browser.find_element_by_css_selector("div.item.mbtn.next")
 		next.click()
-		time.sleep(5)
+		time.sleep(3)
 		#print("clicked")
 		
-
+browser.quit()
 #print("All possible episodes have been looped through")
