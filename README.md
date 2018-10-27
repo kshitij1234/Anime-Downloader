@@ -87,9 +87,6 @@ Finally , you can start the dowload . The rest is similiar to Animeheaven Downlo
 
 Once again I highly discourage you from using this 9anime downloader due to its unpredictable nature . 
 
-# Contributing
-
-It would be nice if you could contribute to this project by finding errors, fixing bugs and even adding support for more sites. Looking forward to your pull requests!!
 
 # DISCLAIMER 
 
